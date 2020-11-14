@@ -1,0 +1,65 @@
+CHUDE:
+-(global/login.php)logout po 20 minutach auto
+-(shop.php)trójkąt przy dropdownie w sklepie _transform(rotate 180deg)
+
+
+
+GRUBE:
+
+-dodać obsługę błędów w logowanie
+
+-zrobić logo z wachaczem i drążek kolumny kierowniczej
+
+
+-funkcja drop produktów(planowanie wystawienia produkty)
+-produkty powiązane przekminić
+-(shop.php) wyświetlanie przedmiotów jako lista
+-uploadowanie zdjęcia
+-ustawienia konta 
+-database jak w zegareczku ma działać
+-projekt produktu
+-strona produktu
+-projekt konto zrobić 
+-konto zrobić  
+-responsywność shop.php
+-(shop.php) breadcrumb
+
+-opinie sklepowe bez refreszowania
+-opinie sklepowe
+
+
+
+|co można zmieniać w ustawieniach|
+-dark theme? 
+-zdjęcie
+-email
+-adresy
+-hasło 
+-powiadomienia 
+-
+
+
+
+Zrezygnowane:
+-dodać obsługę błędów w php rejerstracja (jak ktoś wyłączy javascript) - a jednak jednak nie
+
+
+Done:
++responsywność rejerstracja 
++animacja ładowania - chyba git
++obsługa błędów js w rejerstracja- done
++obsługa wielu błędów jednocześnie- done
++modułowy dropdown js - done 
++wyjebanie bootstrapa - done
++rejerstracja - done
++hashowanie haseł - done 
++rejerstracja ajaxem - done
++(register.php)rejerstracja  z mailemmm 
++logowanie - done
+
+
+
+
+
+
+
