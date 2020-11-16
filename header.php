@@ -1,4 +1,16 @@
 
+<?php
+session_start();
+if(isset($_COOKIE['user_id']) && isset($_COOKIE['user_email']) && isset($_COOKIE['user_login'])){
+  $_SESSION['user_id']=$_COOKIE['user_id'];
+  $_SESSION['user_email']=$_COOKIE['user_email'];
+  $_SESSION['user_login']=$_COOKIE['user_login'];
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -8,7 +20,7 @@
     <link href="fonts/Lato.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="internal.css">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
 
