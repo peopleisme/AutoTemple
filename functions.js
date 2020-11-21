@@ -86,8 +86,6 @@ $(".form_register").on("submit", function (form) {
   })
 })
 
-
-
 $(".form_login").on("submit", function (form) {
   console.log("D")
 
@@ -123,8 +121,6 @@ $(".form_login").on("submit", function (form) {
   })
 })
 
-
-
 $(".form_forgot_password").on("submit", function (form) {
   console.log("D")
 
@@ -147,8 +143,6 @@ $(".form_forgot_password").on("submit", function (form) {
     }
   })
 })
-
-
 
 $(".form_change_password").on("submit", function (form) {
   console.log("D")

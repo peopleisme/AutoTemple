@@ -1,6 +1,5 @@
 
-<div class="footer-background  ">
-  <div class="width100 ">
+
     <div class="footer width100">
 
       <div class="footer_item ">
@@ -40,5 +39,3 @@
         </div>
 
       </div>
-    </div>
-</div>
