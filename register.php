@@ -7,9 +7,9 @@ $input_email = trim($_POST["input_email"]);
 $input_password = $_POST["input_password"];
 $input_password_check = $_POST["input_password_check"];
 
-$query_existing_check  = $conn->prepare("SELECT user_id, user_email, user_login FROM user WHERE user_login=:login OR user_email=:user_email");
+$query_existing_check  = $conn->prepare("SELECT id, email, login FROM user WHERE login=:login OR email=:email");
 $query_existing_check->bindParam(':login', $input_login);
-$query_existing_check->bindParam(':user_email', $input_email);
+$query_existing_check->bindParam(':email', $input_email);
 $query_existing_check->execute();
 //obsługa błędu dla input_login
 if ($query_existing_check->rowCount() > 0) {
@@ -72,7 +72,7 @@ if (isset($input_password) && isset($input_password_check) && $input_password_ch
     array_push($errors, "password_differ");
 }
 
-F
+
 if (empty($errors)) {
     session_start();
     $input_passwordHashed = password_hash($input_password, PASSWORD_BCRYPT);

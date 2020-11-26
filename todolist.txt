@@ -7,11 +7,7 @@ CHUDE:
 GRUBE:
 
 -dodać obsługę błędów w logowanie
-
 -zrobić logo z wachaczem i drążek kolumny kierowniczej
-
-
--funkcja drop produktów(planowanie wystawienia produkty)
 -produkty powiązane przekminić
 -(shop.php) wyświetlanie przedmiotów jako lista
 -uploadowanie zdjęcia
@@ -23,11 +19,11 @@ GRUBE:
 -konto zrobić  
 -responsywność shop.php
 -(shop.php) breadcrumb
-
 -opinie sklepowe bez refreszowania
 -opinie sklepowe
 
-
+-------------------niski priorytet------------------
+-funkcja drop produktów(planowanie wystawienia produkty)
 
 |co można zmieniać w ustawieniach|
 -dark theme? 
@@ -36,7 +32,7 @@ GRUBE:
 -adresy
 -hasło 
 -powiadomienia 
--
+
 
 
 

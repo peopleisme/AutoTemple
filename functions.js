@@ -8,14 +8,12 @@ function logout() {
   }).done(function (result) {
 
     if (result = "done") {
-      window.location.href = "index.php";
+      window.location.href = "index";
 
     }
   })
 
 }
-
-
 
 
 //dropdown modularny
@@ -51,8 +49,6 @@ function validateEmail(email) {
 
 
 $(".form_register").on("submit", function (form) {
-  console.log("D")
-
   form.preventDefault();
 
   $.ajax({
@@ -87,8 +83,6 @@ $(".form_register").on("submit", function (form) {
 })
 
 $(".form_login").on("submit", function (form) {
-  console.log("D")
-
   form.preventDefault();
 
   $.ajax({
@@ -122,8 +116,6 @@ $(".form_login").on("submit", function (form) {
 })
 
 $(".form_forgot_password").on("submit", function (form) {
-  console.log("D")
-
   form.preventDefault();
 
   $.ajax({
@@ -145,7 +137,6 @@ $(".form_forgot_password").on("submit", function (form) {
 })
 
 $(".form_change_password").on("submit", function (form) {
-  console.log("D")
   form.preventDefault();
   $.ajax({
     type: "POST",

@@ -2,6 +2,7 @@
 require_once "config.php";
 require_once "header.php";
 require_once "functions.php";
+require_once "connection.php";
 ?>
 <div class="container-fluid displayFlex flexWrap">
     <div class="shopSearchResult__container">
@@ -89,128 +90,40 @@ require_once "functions.php";
             </div>
         </div>
         <div class="shopItems__container">
-            <div class="shopItem__box">
-                <div class="shopItem__Image">
-                    <img src="img/BlankProductImage.svg" alt="">
-                </div>
-                <div class="shopItem__content">
-                    <p class="shopItem--header"> SanDiskdsasd SDHC Ultra Class10 80MB/s UHS‑I</p>
-                    <p class="shopItem--attribute">Czujniki: Akcelerometr, Pulsometr, Żyroskop </p>
-                    <p class="shopItem--attribute">Nawigacja: Nie </p>
-                    <p class="shopItem--attribute">Odporności: Odporność na wstrząsy, Wodoszczelność 5 ATM </p>
-                    <p class="shopItem--attribute">Czas pracy: do 20 dni normalnego użytkowania </p>
 
+            <?php
+                $itemQuery=$conn->prepare("SELECT * FROM item");
+                $itemQuery->execute();
+                $result=$itemQuery->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach($result as &$row){
+                    echo "
+                    <div class='shopItem__box'>
+                    <div class='shopItem__Image'>
+                        <img src='img/BlankProductImage.svg' alt=''>
+                    </div>
+                    <div class='shopItem__content'>
+                        <p class='shopItem--header'> {$row["title"]}</p>
+                        <p class='shopItem--attribute'>Czujniki: Akcelerometr, Pulsometr, Żyroskop </p>
+                        <p class='shopItem--attribute'>Nawigacja: Nie </p>
+                        <p class='shopItem--attribute'>Odporności: Odporność na wstrząsy, Wodoszczelność 5 ATM </p>
+                        <p class='shopItem--attribute'>Czas pracy: do 20 dni normalnego użytkowania </p>
+    
+                    </div>
+                    <div class='shopItem__priceContainer'>
+                        <p class='shopItem_price'>{$row["price"]}</p>
+                        <div class='shopItem_button'></div>
+                    </div>
                 </div>
-                <div class="shopItem__priceContainer">
-                    <p class="shopItem_price">1299.99 zł</p>
-                    <div class="shopItem_button"></div>
-                </div>
-            </div>
-            <div class="shopItem__box">
-                <div class="shopItem__Image">
-                    <img src="img/BlankProductImage.svg" alt="">
-                </div>
-                <div class="shopItem__content">
-                    <p class="shopItem--header"> SanDiskdsasd SDHC Ultra Class10 80MB/s UHS‑I</p>
-                    <p class="shopItem--attribute">Słupek: tetrohydrokanabinol </p>
-                    <p class="shopItem--attribute">Wahacz: hydroksyzyna </p>
-                    <p class="shopItem--attribute">Kolumna: oksykodon </p>
-                </div>
-                <div class="shopItem__priceContainer">
-                    <p class="shopItem_price">1299.99 zł</p>
-                    <div class="shopItem_button"></div>
-                </div>
-            </div>
-            <div class="shopItem__box">
-                <div class="shopItem__Image">
-                    <img src="img/BlankProductImage.svg" alt="">
-                </div>
-                <div class="shopItem__content">
-                    <p class="shopItem--header"> SanDiskdsasd SDHC Ultra Class10 80MB/s UHS‑I</p>
-                    <p class="shopItem--attribute">Słupek: tetrohydrokanabinol </p>
-                    <p class="shopItem--attribute">Wahacz: hydroksyzyna </p>
-                    <p class="shopItem--attribute">Kolumna: oksykodon </p>
-                </div>
-                <div class="shopItem__priceContainer">
-                    <p class="shopItem_price">1299.99 zł</p>
-                    <div class="shopItem_button"></div>
-                </div>
-            </div>
-            <div class="shopItem__box">
-                <div class="shopItem__Image">
-                    <img src="img/BlankProductImage.svg" alt="">
-                </div>
-                <div class="shopItem__content">
-                    <p class="shopItem--header"> SanDiskdsasd SDHC Ultra Class10 80MB/s UHS‑I</p>
-                    <p class="shopItem--attribute">Słupek: tetrohydrokanabinol </p>
-                    <p class="shopItem--attribute">Wahacz: hydroksyzyna </p>
-                    <p class="shopItem--attribute">Kolumna: oksykodon </p>
-                </div>
-                <div class="shopItem__priceContainer">
-                    <p class="shopItem_price">1299.99 zł</p>
-                    <div class="shopItem_button"></div>
-                </div>
-            </div>
-            <div class="shopItem__box">
-                <div class="shopItem__Image">
-                    <img src="img/BlankProductImage.svg" alt="">
-                </div>
-                <div class="shopItem__content">
-                    <p class="shopItem--header"> SanDiskdsasd SDHC Ultra Class10 80MB/s UHS‑I</p>
-                    <p class="shopItem--attribute">Słupek: tetrohydrokanabinol </p>
-                    <p class="shopItem--attribute">Wahacz: hydroksyzyna </p>
-                    <p class="shopItem--attribute">Kolumna: oksykodon </p>
-                </div>
-                <div class="shopItem__priceContainer">
-                    <p class="shopItem_price">1299.99 zł</p>
-                    <div class="shopItem_button"></div>
-                </div>
-            </div>
-            <div class="shopItem__box">
-                <div class="shopItem__Image">
-                    <img src="img/BlankProductImage.svg" alt="">
-                </div>
-                <div class="shopItem__content">
-                    <p class="shopItem--header"> SanDiskdsasd SDHC Ultra Class10 80MB/s UHS‑I</p>
-                    <p class="shopItem--attribute">Słupek: tetrohydrokanabinol </p>
-                    <p class="shopItem--attribute">Wahacz: hydroksyzyna </p>
-                    <p class="shopItem--attribute">Kolumna: oksykodon </p>
-                </div>
-                <div class="shopItem__priceContainer">
-                    <p class="shopItem_price">1299.99 zł</p>
-                    <div class="shopItem_button"></div>
-                </div>
-            </div>
-            <div class="shopItem__box">
-                <div class="shopItem__Image">
-                    <img src="img/BlankProductImage.svg" alt="">
-                </div>
-                <div class="shopItem__content">
-                    <p class="shopItem--header"> SanDiskdsasd SDHC Ultra Class10 80MB/s UHS‑I</p>
-                    <p class="shopItem--attribute">Słupek: tetrohydrokanabinol </p>
-                    <p class="shopItem--attribute">Wahacz: hydroksyzyna </p>
-                    <p class="shopItem--attribute">Kolumna: oksykodon </p>
-                </div>
-                <div class="shopItem__priceContainer">
-                    <p class="shopItem_price">1299.99 zł</p>
-                    <div class="shopItem_button"></div>
-                </div>
-            </div>
-            <div class="shopItem__box">
-                <div class="shopItem__Image">
-                    <img src="img/BlankProductImage.svg" alt="">
-                </div>
-                <div class="shopItem__content">
-                    <p class="shopItem--header"> SanDiskdsasd SDHC Ultra Class10 80MB/s UHS‑I</p>
-                    <p class="shopItem--attribute">Słupek: tetrohydrokanabinol </p>
-                    <p class="shopItem--attribute">Wahacz: hydroksyzyna </p>
-                    <p class="shopItem--attribute">Kolumna: oksykodon </p>
-                </div>
-                <div class="shopItem__priceContainer">
-                    <p class="shopItem_price">1299.99 zł</p>
-                    <div class="shopItem_button"></div>
-                </div>
-            </div>
+                    ";
+                
+                }
+            ?>
+
+
+
+
+
 
 
         </div>

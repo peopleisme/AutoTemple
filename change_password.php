@@ -5,9 +5,9 @@ require_once "connection.php";
 session_start();
 if (isset($_POST['input_password']) && isset($_POST['input_password_check'])) {
     if ($_POST['input_password'] == $_POST['input_password_check']) {
-        $query_existing_check  = $conn->prepare("UPDATE user SET user_password=:input_password WHERE user_email=:user_email");
-        $query_existing_check->bindParam(':user_email', $_SESSION['input_email']);
-        $query_existing_check->bindParam(':input_password', password_hash($_POST['input_password'], PASSWORD_BCRYPT));
+        $query_existing_check  = $conn->prepare("UPDATE user SET password=:password WHERE email=:email ");
+        $query_existing_check->bindParam(':email', $_SESSION['input_email']);
+        $query_existing_check->bindParam(':password', password_hash($_POST['input_password'], PASSWORD_BCRYPT));
         $query_existing_check->execute();
     } else {
         array_push($errors, "password_differ");
@@ -15,8 +15,8 @@ if (isset($_POST['input_password']) && isset($_POST['input_password_check'])) {
 } else {
 
     $input_email = trim($_POST['input_email']);
-    $query_existing_check  = $conn->prepare("SELECT user_id, user_email FROM user WHERE user_email=:user_email");
-    $query_existing_check->bindParam(':user_email', $input_email);
+    $query_existing_check  = $conn->prepare("SELECT user_id, email FROM user WHERE email=:email");
+    $query_existing_check->bindParam(':email', $input_email);
     $query_existing_check->execute();
     //obsługa błędu dla input_login
     if ($query_existing_check->rowCount() < 1) {

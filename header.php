@@ -83,13 +83,17 @@ if(isset($_COOKIE['user_id']) && isset($_COOKIE['user_email']) && isset($_COOKIE
           <div class="account-header " ><p title="'.$_SESSION["user_login"].'">'.$_SESSION["user_login"].'</p></div>
           <a class="dropdown-item Myaccount" href="">Moje konto</a>
           <a class="dropdown-item settingsGear" href="ustawienia">Ustawienia</a>
-          <a class="dropdown-item LogOutSketch" onclick="logout()">Wyloguj</a>
+          
+          ';
+           if(isset($_SESSION["user_permission"]) && $_SESSION["user_permission"]==10){
+             echo '<a class="dropdown-item AdminPanelSketch" href="admin_panel">Panel Administarcyjny</a>';
+           }
+           
+           echo'
+           <a class="dropdown-item LogOutSketch" onclick="logout()">Wyloguj</a>
           <div class="account_SketchBar">
-
           </div>
         </div>
-
-    
       ';
     }
     
