@@ -757,26 +757,56 @@
 .SettingsOptions__container {}
 
 .SettingsOption {
-  padding-left: 15px;
-  font-size: 20px;
-  line-height: 45px;
-  font-weight: bold;
-  cursor: pointer;
   user-select: none;
 }
-
-.SettingsOption:hover,
-.SettingsOption.active {
-  background-color: var(--kolor-czerwony-hover);
+.SettingsOption > .SettingsOption--option{
+  transition: visibility,height .2s cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: hidden;
+  height: 0;  
+}
+.SettingsOption.active > .SettingsOption--option{
+  transition: ;
+  visibility: visible;
+  height: auto;  
 }
 
-.SettingsOption:hover:before,
-.SettingsOption.active:before {
 
+.SettingsOption--header{
+  background-color: rgb(49, 49, 49,10%);
+  cursor: pointer;
+  position: relative;
+  line-height: 45px;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 15px;
+
+}
+.SettingsOption--option{
+  color: #313131;
+  display: flex;
+  font-size: 16px;
+  background-color: rgb(49, 49, 49,5%);
+  padding-left: 15px;
+  line-height: 25px;
+}
+.SettingsOption--option:hover{
+  color:rgb(0, 0, 0,50%);
+}
+
+.SettingsOption > .SettingsOption--header:hover,
+.SettingsOption.active > .SettingsOption--header {
+  background-color: rgb(49, 49, 49,15%);
+}
+
+.SettingsOption>.SettingsOption--header:hover:before,
+.SettingsOption.active > .SettingsOption--header:before {
+
+  
+  display: block;
   content: "";
   position: absolute;
   width: 7px;
-  height: 45px;
+  height: 100%;
   left: 0px;
   background-color: var(--kolor-czerwony);
 }

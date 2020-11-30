@@ -1,11 +1,10 @@
-CHUDE:
+
+<CHUDE>
 -(global/login.php)logout po 20 minutach auto
 -(shop.php)trójkąt przy dropdownie w sklepie _transform(rotate 180deg)
 
-
-
-GRUBE:
-
+</CHUDE>
+<GRUBE>
 -dodać obsługę błędów w logowanie
 -zrobić logo z wachaczem i drążek kolumny kierowniczej
 -produkty powiązane przekminić
@@ -21,26 +20,9 @@ GRUBE:
 -(shop.php) breadcrumb
 -opinie sklepowe bez refreszowania
 -opinie sklepowe
+</GRUBE>
 
--------------------niski priorytet------------------
--funkcja drop produktów(planowanie wystawienia produkty)
-
-|co można zmieniać w ustawieniach|
--dark theme? 
--zdjęcie
--email
--adresy
--hasło 
--powiadomienia 
-
-
-
-
-Zrezygnowane:
--dodać obsługę błędów w php rejerstracja (jak ktoś wyłączy javascript) - a jednak jednak nie
-
-
-Done:
+<DONE> 
 +responsywność rejerstracja 
 +animacja ładowania - chyba git
 +obsługa błędów js w rejerstracja- done
@@ -52,6 +34,29 @@ Done:
 +rejerstracja ajaxem - done
 +(register.php)rejerstracja  z mailemmm 
 +logowanie - done
+</DONE> 
+
+<odrzucone>
+-dodać obsługę błędów w php rejerstracja (jak ktoś wyłączy javascript) - a jednak jednak nie
+</odrzucone>
+
+<niski_priorytet>
+-funkcja drop produktów(planowanie wystawienia produkty)
+</niski_priorytet>
+
+<user_settings>
+|co można zmieniać w ustawieniach|
+-dark theme? 
+-zdjęcie
+-email
+-adresy
+-hasło 
+-powiadomienia 
+</user_settings>
+
+
+
+
 
 
 

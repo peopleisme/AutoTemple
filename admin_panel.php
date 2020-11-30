@@ -23,9 +23,19 @@ else{
             <p class="SettingsHeader">Panel Administracyjny</p>
         </div>
         <div class="SettingsOptions__container">
-            <p class="SettingsOption active">Produkty</p>
-            <p class="SettingsOption ">Kategorie</p>
-            <p class="SettingsOption ">Media</p>
+            <div class="SettingsOption active"> 
+                <p class="SettingsOption--header select" >Produkty</p>
+                <a class="SettingsOption--option" href=""> Wszystkie </a>
+                <a class="SettingsOption--option" href=""> Dodaj </a>
+            </div>
+            <div class="SettingsOption "> 
+                <p class="SettingsOption--header" >Kategorie</p>
+                <a class="SettingsOption--option" href=""> Wszystkie </a>
+                <a class="SettingsOption--option" href=""> Dodaj </a>
+            </div>
+            <div class="SettingsOption "> 
+                <p class="SettingsOption--header" >Media</p>
+            </div>
 
         </div>
         

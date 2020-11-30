@@ -1,3 +1,5 @@
+$(".loader-container").css("display", "none");
+
 function logout() {
   $.ajax({
     type: 'POST',
@@ -31,22 +33,20 @@ $(window).click(function (event) {
     }
   }
 })
-
 $(".shopItemsList > .dropdown-item").click(function (event) {
   $(".dropdownButton[data-dropdowntarget~=d43jk]")[0].innerHTML = event.target.innerHTML;
 })
 
-$(".loader-container").css("display", "none");
+
+
+
+
 
 
 function validateEmail(email) {
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
-
-
-
-
 
 $(".form_register").on("submit", function (form) {
   form.preventDefault();
