@@ -5,7 +5,18 @@
 
 </CHUDE>
 <GRUBE>
--dodać obsługę błędów w logowanie
+
+-żeby nie można było tych samych dodać
+
+-żeby można było usuwać
+-żeby można było dragować
+-żeby sie dodawało
+
+-żeby sie usuwały po wyjściu
+
+
+
+
 -zrobić logo z wachaczem i drążek kolumny kierowniczej
 -produkty powiązane przekminić
 -(shop.php) wyświetlanie przedmiotów jako lista
@@ -16,13 +27,15 @@
 -strona produktu
 -projekt konto zrobić 
 -konto zrobić  
--responsywność shop.php
+
 -(shop.php) breadcrumb
 -opinie sklepowe bez refreszowania
 -opinie sklepowe
 </GRUBE>
 
 <DONE> 
++dodać obsługę błędów w logowanie
++responsywność shop.php
 +responsywność rejerstracja 
 +animacja ładowania - chyba git
 +obsługa błędów js w rejerstracja- done

@@ -72,7 +72,9 @@ if(isset($_COOKIE['user_id']) && isset($_COOKIE['user_email']) && isset($_COOKIE
         </div>
       </div>
     </form>
+    <div class="navigation_cart"> <a href="koszyk"><img src="img/CartNavigationSketch.svg" alt=""></a></div>
     <div class="navbar_konto">
+    
 
 
     <?php

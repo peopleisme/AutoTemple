@@ -92,32 +92,32 @@ require_once "connection.php";
         <div class="shopItems__container">
 
             <?php
-                $itemQuery=$conn->prepare("SELECT * FROM item");
-                $itemQuery->execute();
-                $result=$itemQuery->fetchAll(PDO::FETCH_ASSOC);
-
-                foreach($result as &$row){
-                    echo "
-                    <div class='shopItem__box'>
-                    <div class='shopItem__Image'>
-                        <img src='img/BlankProductImage.svg' alt=''>
-                    </div>
-                    <div class='shopItem__content'>
-                        <p class='shopItem--header'> {$row["title"]}</p>
-                        <p class='shopItem--attribute'>Czujniki: Akcelerometr, Pulsometr, Żyroskop </p>
-                        <p class='shopItem--attribute'>Nawigacja: Nie </p>
-                        <p class='shopItem--attribute'>Odporności: Odporność na wstrząsy, Wodoszczelność 5 ATM </p>
-                        <p class='shopItem--attribute'>Czas pracy: do 20 dni normalnego użytkowania </p>
-    
-                    </div>
-                    <div class='shopItem__priceContainer'>
-                        <p class='shopItem_price'>{$row["price"]}</p>
-                        <div class='shopItem_button'></div>
-                    </div>
+            $itemQuery = $conn->prepare("SELECT * FROM item left outer join (
+                SELECT  item_id,link from gallery
+                GROUP by item_id
+                ) as glariea on item.id=glariea.item_id ");
+            $itemQuery->execute();
+            $result = $itemQuery->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($result as &$row) {
+                if($row["link"]=='') $row["link"]="productsImg/BlankProductImage.svg";
+                echo "
+            <div class='shopItem__box' id={$row["id"]}>
+                <div class='shopItem__Image'>
+                    <img src='{$row["link"]}' alt=''>
                 </div>
+                <div class='shopItem__content'>
+                    <p class='shopItem--header'> {$row["title"]}</p>
+                    <p class='shopItem--attribute'> </p>
+
+
+                </div>
+                <div class='shopItem__priceContainer'>
+                    <p class='shopItem_price'>{$row["price"]} zł    </p>
+                    <div class='shopItem_button'></div>
+                </div>
+            </div>
                     ";
-                
-                }
+            }
             ?>
 
 
