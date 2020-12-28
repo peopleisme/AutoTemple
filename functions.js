@@ -68,8 +68,8 @@ if (fileinput) {
     fileinput.type = "file"
   }
 }
-if(document.querySelector('.addProduct')){
-  document.querySelector('.addProduct').onsubmit = (form) => {  
+if (document.querySelector('.addProduct')) {
+  document.querySelector('.addProduct').onsubmit = (form) => {
     form.preventDefault()
     const xhr = new XMLHttpRequest();
     const formularz = new FormData();
@@ -88,23 +88,31 @@ if(document.querySelector('.addProduct')){
     xhr.open('POST', 'functions.php', true)
     xhr.send(formularz)
     document.querySelector('.addProduct').reset()
-    document.querySelector('.Setting__box--gallery_box').innerHTML=''
+    document.querySelector('.Setting__box--gallery_box').innerHTML = ''
   }
 }
-if(document.querySelector(".shopItem__box")){
-  document.querySelectorAll(".shopItem__box").forEach((item) =>{
-    item.addEventListener('click',(event)=>{
+
+if (document.querySelector(".shopItem__box")) {
+  document.querySelectorAll(".shopItem__box").forEach((item) => {
+    item.addEventListener('click', (event) => {
       window.location.href = `p?id=${item.id}`;
     })
-
   })
-
-
 }
+document.querySelectorAll('.CollapsableMenu__option>.CollapsableMenu--header').forEach((item) => {
 
-
-
-
+  item.addEventListener("click", (event) => {
+    item.parentElement.classList.toggle('active')
+    console.log(item.parentElement.children[1].scrollHeight);
+    if (item.parentElement.classList.contains('active')) {
+      item.parentElement.children[1].style.height = item.parentElement.children[1].scrollHeight + 'px'
+      item.parentElement.children[1].style.opacity = 1
+    } else {
+      item.parentElement.children[1].style.height = 0
+      item.parentElement.children[1].style.opacity = 0
+    }
+  })
+})
 
 
 //dropdown modularny
@@ -112,28 +120,30 @@ var dropdown
 //kliknięcie w przycisk
 document.querySelectorAll(".dropdownButton").forEach((item) => {
   item.addEventListener('click', (event) => {
+    if ($(".dropdown-menu[data-dropdowntarget~=" + dropdown + "]").hasClass("show") && dropdown != event.target.dataset.dropdowntarget) {
+      $(".dropdown-menu[data-dropdowntarget~=" + dropdown + "]").removeClass("show")
+    }
     dropdown = event.target.dataset.dropdowntarget;
     $(".dropdown-menu[data-dropdowntarget~=" + dropdown + "]").toggleClass("show");
   })
 })
 
 
+// document.querySelectorAll(".shopItemsList > .dropdown-item").forEach((item) => {
+//   item.addEventListener('click', (event) => {
+//     document.querySelector(".dropdownButton[data-dropdowntarget~=d43jk]").innerHTML = event.target.innerHTML
+//   })
+// })
+
+
 window.addEventListener('click', (event) => {
+
+  //dropdown modularny
   if (!event.target.matches(".dropdownButton[data-dropdowntarget~=" + dropdown + "]")) {
     if ($(".dropdown-menu[data-dropdowntarget~=" + dropdown + "]").hasClass('show')) {
       $(".dropdown-menu[data-dropdowntarget~=" + dropdown + "]").removeClass("show");
     }
   }
-})
-
-document.querySelectorAll(".shopItemsList > .dropdown-item").forEach((item) => {
-  item.addEventListener('click', (event) => {
-    document.querySelector(".dropdownButton[data-dropdowntarget~=d43jk]").innerHTML = event.target.innerHTML
-  })
-})
-
-
-window.addEventListener('click', (event) => {
 
   if (event.target.matches(".SettingsOption:not(.active) > .SettingsOption--header")) {
     document.querySelector(".SettingsOption.active").classList.remove("active")
@@ -149,19 +159,8 @@ window.addEventListener('click', (event) => {
       document.querySelector(".Setting__box.show").classList.remove("show");
     if (document.querySelector(`[data-target~=${event.target.dataset.link}]`))
       document.querySelector(`[data-target~=${event.target.dataset.link}]`).classList.add("show")
-
   }
-
 })
-
-
-
-
-
-
-
-
-
 
 function validateEmail(email) {
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -285,21 +284,25 @@ $(".form_change_password").on("submit", function (form) {
 })
 
 
+if (location.pathname.includes("sklep")) {
+  console.log("sklep");
+  console.log(document.cookie);
+  const xhr = new XMLHttpRequest()
+  const formularz = new FormData()
+  formularz.append("function", "productsDownload")
+  xhr.open("post", "functions.php", true)
+  xhr.send(formularz);
+  let czas = Date.now();
+  xhr.onreadystatechange = () => {
+    console.log(xhr.status)
+    console.log(Date.now()-czas)
+  }
+
+}
+
+
 
 $(window).ready(function () {
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   //dokument załadowany
 
