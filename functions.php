@@ -31,7 +31,6 @@ if (isset($_POST['function']) && $_POST['function'] == 'temporaryFileDelete') {
     echo $_POST['deleteFile'];
     if (isset($_POST['deleteFile'])) unlink($_POST['deleteFile']);
 }
-
 if (isset($_POST['function']) && $_POST['function'] == 'addProduct') {
     require_once "config.php";
     require_once "connection.php";
@@ -60,4 +59,27 @@ if (isset($_POST['function']) && $_POST['function'] == 'addProduct') {
         $query->bindParam(":link", $dirPhoto);
         $query->execute();
     }
+}
+if (isset($_POST['function']) && $_POST['function'] == 'productsDownload') {
+    require_once "config.php";
+    require_once "connection.php";
+
+    $itemQuery = $conn->prepare('SELECT *  FROM item  inner join (
+        SELECT item_id,CONCAT("[\"" ,GROUP_CONCAT(link SEPARATOR"\" , \"" ),"\"]") as link
+        from gallery
+        WHERE link like "%image0%"
+        OR  link like "%image1%"
+        GROUP by item_id
+        ) as galeria on item.id=galeria.item_id 
+        order by title');
+    $itemQuery->execute();
+    $result = $itemQuery->fetchAll(PDO::FETCH_ASSOC);
+    $resultArray = array();
+
+    foreach ($result as &$row) {
+        $arrayRow = array("title" => $row["title"], "price" => $row["price"], "categoryid" => $row["categoryid"], "item_id" => $row["item_id"], "link" => json_decode($row["link"]))  ;
+        array_push($resultArray,$arrayRow );
+    }
+    echo json_encode($resultArray);
+
 }

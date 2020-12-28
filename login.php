@@ -32,7 +32,7 @@ if ($query->rowCount() == 1) {
     unset($input_login);
     unset($input_password);
     session_regenerate_id();
-    if($input_remember_me && !$result['permission']){
+    if(isset($input_remember_me)){
       setcookie("user_id",$_SESSION["user_id"] , time() + 60*60*24*30);
       setcookie("user_email",$_SESSION["user_email"] , time() + 60*60*24*30);
       setcookie("user_login",$_SESSION["user_login"] , time() + 60*60*24*30);

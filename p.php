@@ -22,12 +22,15 @@ require_once "connection.php";
         <div class="productPage__container--image">
             <img src="<?= $result[0]['link'] ?? "productsImg/BlankProductImage.svg"; ?>" alt="">
         </div>
+        <div class="productPage__container--image">
+            <img src="<?= $result[0]['link'] ?? "productsImg/BlankProductImage.svg"; ?>" alt="">
+        </div>
         <div class="productPage__container--content">
             <div class="productPage__container--header">
                 <?= $result[0]['title'] ?? "Brak"; ?>
             </div>
             <div class="productPage__container--price">
-                <?= $result[0]['price'].' ZŁ' ?? "Brak"; ?>
+                <?= $result[0]['price'].' zł' ?? "Brak"; ?>
                 
             </div>
 

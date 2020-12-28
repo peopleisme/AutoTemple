@@ -42,40 +42,50 @@ if (isset($_SESSION["user_permission"]) && $_SESSION["user_permission"] == 10) {
         </div>
     </div>
     <div class="Setting__container">
-
         <div class="Setting__box show " data-target="product-all">
             <form action="">
                 <p class="Setting__box--header">Produkty</p>
                 <p class="Setting__box--component">
-
-                    <div class="Setting__box--table">
-                        <p>Obraz</p>
-                        <p>Nazwa</p>
-                        <p>Ilość</p>
-                        <p>Kategoria</p>
-                        <p>Cena</p>
+                    <table class="Setting__box--table">
+                        <tr>
+                            <th>Edytuj</th>
+                            <th>Obraz</th>
+                            <th>Nazwa</th>
+                            <th>Ilość</th>
+                            <th>Kategoria</th>
+                            <th>Cena</th>
+                        </tr>
                         <?php
-                        $listQuery = $conn->prepare("SELECT * FROM item left outer join (
-                            SELECT  item_id,link from gallery
+                        $listQuery = $conn->prepare('SELECT *  FROM item  inner join (
+                            SELECT item_id,CONCAT("[\"" ,GROUP_CONCAT(link SEPARATOR"\" , \"" ),"\"]") as link
+                            from gallery
+                            WHERE link like "%image0%"
                             GROUP by item_id
-                            ) as glariea on item.id=glariea.item_id ");
+                            ) as galeria on item.id=galeria.item_id 
+                            order by title');
                         $listQuery->execute();
                         $listResult = $listQuery->fetchAll(PDO::FETCH_ASSOC);
-
                         foreach ($listResult as $row) {
-                            if($row["link"]=='') $row["link"]="productsImg/BlankProductImage.svg";
-                            echo '                      
-                                <img src="'.$row["link"].'" alt="">
-                                <p> ' . $row["title"] . '</p>
-                                <p> ' . $row["quantity"] . '</p>
-                                <p> ' . $row["categoryid"] . '</p>
-                                <p> ' . $row["price"] . '</p>
+                            $imageArray = json_decode($row["link"]);
+                            $Image = $imageArray[0] ?? "productsImg/BlankProductImage.svg";
+                            echo ' 
+                            <tr>                     
+                                <td><label class="checkmark_container">
+                                    <input  type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label></td>
+                                <td><img src="' . $Image . '" alt=""></td>
+                                <td> ' . $row["title"] . '</td>
+                                <td> ' . $row["quantity"] . '</td>
+                                <td> ' . $row["categoryid"] . '</td>
+                                <td> ' . $row["price"] . '. zł</td>
+                                </tr>
                             ';
                         }
 
                         ?>
 
-                    </div>
+                    </table>
                 </p>
 
             </form>
@@ -106,7 +116,7 @@ if (isset($_SESSION["user_permission"]) && $_SESSION["user_permission"] == 10) {
                 <p class="Setting__box--component">
                     <span class="Setting__box--component--header">Galeria</span>
                     <div class="Setting__box--gallery_box">
-                        
+
                     </div>
                     <div class="Setting__box--component--file">
                         <input type="file" name="" id="file" multiple>
@@ -123,17 +133,17 @@ if (isset($_SESSION["user_permission"]) && $_SESSION["user_permission"] == 10) {
             <form action="">
                 <p class="Setting__box--header">Kategorie</p>
                 <?php
-                        $listQuery = $conn->prepare("SELECT * FROM item");
-                        $listQuery->execute();
-                        $listResult = $listQuery->fetchAll(PDO::FETCH_ASSOC);
+                $listQuery = $conn->prepare("SELECT * FROM item");
+                $listQuery->execute();
+                $listResult = $listQuery->fetchAll(PDO::FETCH_ASSOC);
 
-                        foreach ($listResult as $row) {
-                            echo '                      
+                foreach ($listResult as $row) {
+                    echo '                      
    
                             ';
-                        }
+                }
 
-                        ?>
+                ?>
             </form>
         </div>
         <div class="Setting__box" data-target="category-add">
